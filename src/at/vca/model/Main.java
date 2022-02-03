@@ -1,6 +1,7 @@
 package at.vca.model;
 
 import at.vca.model.helper.PasswordManagement;
+import at.vca.model.helper.UserManagement;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
