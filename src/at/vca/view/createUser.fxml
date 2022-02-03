@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="630.0" style="-fx-background-color: #0E0021;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.vca.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="630.0" style="-fx-background-color: #0E0021;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.vca.controller.createUserController">
    <children>
       <Label layoutX="217.0" layoutY="14.0" text="Hello, friend!" textFill="WHITE">
          <font>
@@ -49,32 +49,32 @@
                   <Font name="Georgia Bold" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="42.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
+            <TextField fx:id="firstName_txt" layoutX="42.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <TextField layoutX="246.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
+            <TextField fx:id="lastName_txt" layoutX="246.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <TextField layoutX="42.0" layoutY="92.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
+            <TextField fx:id="username_txt" layoutX="42.0" layoutY="92.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <TextField layoutX="246.0" layoutY="92.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
+            <TextField fx:id="email_txt" layoutX="246.0" layoutY="92.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <TextField layoutX="42.0" layoutY="148.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
+            <TextField fx:id="password_txt" layoutX="42.0" layoutY="148.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <TextField layoutX="246.0" layoutY="148.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
+            <TextField fx:id="confirmPassword_txt" layoutX="246.0" layoutY="148.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="172.0">
                <font>
                   <Font size="10.0" />
                </font>
@@ -84,7 +84,7 @@
                   <Image url="@EyeIcon.png" />
                </image>
             </ImageView>
-            <Button layoutX="137.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #66B2FF;" text="CREATE ACCOUNT">
+            <Button fx:id="createAcc_btn" layoutX="137.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #66B2FF;" text="CREATE ACCOUNT">
                <font>
                   <Font name="Georgia Bold" size="12.0" />
                </font>
@@ -99,7 +99,7 @@
             <Font name="Georgia" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="334.0" layoutY="296.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="Sign In" textFill="#3333ff">
+      <Button fx:id="signIn_btn" layoutX="334.0" layoutY="296.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="Sign In" textFill="#3333ff">
          <font>
             <Font name="Georgia Pro" size="12.0" />
          </font>
