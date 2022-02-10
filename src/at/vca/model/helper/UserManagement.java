@@ -10,11 +10,8 @@ import java.util.*;
 public class UserManagement {
 
 
-    // provisorische checkUserData Methode
-    // returns true if inputData == savedData
-    // inputData: Username or emailAddress, password
-    // Methodenname gehört verbessert
-    public static boolean hasSameData(User inputUser){
+    // returns true, if inputUsers Username or E-Mail is already in the File
+    public static boolean hasSameUsernameOrEmail(User inputUser) {
         boolean hasSameData = false;
         Collection<User> userList = FileManagement.read(FileManagement.getUserDataFile());
 

@@ -30,7 +30,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
-        /*PasswordManagement.writeUserData("sadfser", "passwort");
         User user1 = new User("Leon", "Jukic", "Leon69", "kldsjofosj343", "leon@htl-wels.at");
         User user2 = new User("Julian", "Helperstorfer", "Juli565", "werffsdfsf434342", "julian@htl-wels.at");
         User user3 = new User("Baran", "Imre", "Lelelele1", "opskfp93238dsfoh", "imre@htl-wels.ar");
@@ -46,9 +45,8 @@ public class Main extends Application {
 
         FileManagement.write(userList, file1);
 
-        System.out.println("Parameter stimmt mit File Daten überein: " + UserManagement.hasSameData(user3));
-        userList2 = (ArrayList<User>) FileManagement.read(file1);*/
 
+        userList2 = (LinkedList<User>) FileManagement.read(file1);
 
         launch(args);
     }

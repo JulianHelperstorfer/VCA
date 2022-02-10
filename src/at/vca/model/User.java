@@ -31,6 +31,8 @@ public class User implements Serializable {
         this.eMail = eMail;
     }
 
+
+    //Getter and Setter für this Classes Variables.
     public String getFirstName() {
         return firstName;
     }
