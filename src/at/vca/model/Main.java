@@ -16,6 +16,7 @@ import java.io.File;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Main extends Application {
 
@@ -34,8 +35,8 @@ public class Main extends Application {
         User user2 = new User("Julian", "Helperstorfer", "Juli565", "werffsdfsf434342", "julian@htl-wels.at");
         User user3 = new User("Baran", "Imre", "Lelelele1", "opskfp93238dsfoh", "imre@htl-wels.ar");
 
-        ArrayList<User> userList = new ArrayList<>();
-        ArrayList<User> userList2 = new ArrayList<>();
+        LinkedList<User> userList = new LinkedList<>();
+        LinkedList<User> userList2 = new LinkedList<>();
 
         userList.add(user1);
         userList.add(user2);

@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 
 public class PasswordManagement {
 
+    //defining the Variables.
     static KeyGenerator kg;
     static SecretKey secKey;
     static Cipher cipher;

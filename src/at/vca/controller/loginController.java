@@ -38,10 +38,11 @@ public class loginController {
     private String password;
     boolean passwordHidden;
 
+    //defines the FXML Variables.
     @FXML
     private TextField username_txt;
 
-    @FXML private TextField password_txt;
+    @FXML private PasswordField password_txt;
 
     @FXML private Button signIn_btn;
 
@@ -49,11 +50,14 @@ public class loginController {
 
     @FXML private Button showPassw_btn;
 
-    @FXML public void initialize(){
+    @FXML public void initialize(){ //Initialize Methode, when this Programm starts, it runs through this Code.
 
+        //BooleanBinding to check, if the username and password have been entered.
         BooleanBinding textFieldEntered =
                 username_txt.textProperty().isNotEmpty().and(password_txt.textProperty().isNotEmpty());
 
+        //Binds the SignIn-Button Property to the BooleanBinding
+        //As long as the BooleanBinding isnt true, it will be deactivated.
         signIn_btn.disableProperty().bind(textFieldEntered.not());
     }
 

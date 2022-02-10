@@ -23,9 +23,12 @@ public class User implements Serializable {
     private String eMail;
 
 
-    public User(String firstName, String lastName, String userName, String password, String eMail) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+    //Constructor, that's used when a User is beeing created.
+    public User(String firstName, String lastName, String userName, String password, String eMail) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException{
+        //Sets the
         this.firstName = firstName;
         this.lastName = lastName;
+        //Encrypts the Username and Password, übergibt diese dann an die 2 Attribute in dieser Klasse.
         this.userName = PasswordManagement.encrypt(userName);
         this.password = PasswordManagement.encrypt(password);
         this.eMail = eMail;

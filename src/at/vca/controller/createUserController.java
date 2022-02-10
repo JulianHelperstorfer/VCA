@@ -45,6 +45,8 @@ public class createUserController {
 
     @FXML private TextField password_txt;
 
+    @FXML private PasswordField password_pwf;
+
     @FXML private TextField confirmPassword_txt;
 
     @FXML private PasswordField confirmPassword_pwf;
@@ -59,8 +61,9 @@ public class createUserController {
 
     Format format;
 
-    @FXML public void initialize(){
+    @FXML public void initialize(){ //Initialize Methode, wo bei start des Programmes dieser Code ausgeführt wird.
 
+            //BooleanBinding for, when you want to create a User, to check if all TextFields are not empty and the Password equals the ConfirmPassword.
         BooleanBinding textFieldEntered =
                 firstName_txt.textProperty().isNotEmpty().
                         and(lastName_txt.textProperty().isNotEmpty())
@@ -69,6 +72,8 @@ public class createUserController {
                         .and(password_txt.textProperty().isNotEmpty())
                         .and(confirmPassword_txt.textProperty().isEqualTo(password_txt.textProperty()));
 
+        //Binds the Property of the createAccount-Button to the Booleanbinding.
+        //Means, that as long as not all criterias are fullfilled, it will be disabled.
         createAcc_btn.disableProperty().bind(textFieldEntered.not());
 
     }
