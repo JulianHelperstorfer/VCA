@@ -2,6 +2,8 @@ package at.vca.controller;
 //Baran Imre 27.01.2022
 
 import at.vca.model.User;
+import at.vca.model.helper.FileManagement;
+import at.vca.model.helper.UserManagement;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,9 +47,17 @@ public class createUserController {
 
     @FXML private TextField confirmPassword_txt;
 
+    @FXML private PasswordField confirmPassword_pwf;
+
     @FXML private Button createAcc_btn;
 
     @FXML private Button signIn_btn;
+
+    @FXML private ImageView eyeIcon;
+
+    int counter=0;
+
+    Format format;
 
     @FXML public void initialize(){
 

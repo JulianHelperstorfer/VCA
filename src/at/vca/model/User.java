@@ -7,6 +7,7 @@ import javax.crypto.IllegalBlockSizeException;
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.security.InvalidKeyException;
+import java.util.Arrays;
 
 /****
  Author: Bertal Imre
@@ -68,6 +69,14 @@ public class User implements Serializable {
 
     public void seteMail(String eMail) {
         this.eMail = eMail;
+    }
+
+
+    public boolean equals(Object o) {   //Compares 2 Users and checks, if they have the same Email or Username.
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Arrays.equals(userName, user.userName) || eMail.equals(user.eMail);
     }
 }
 
