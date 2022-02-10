@@ -9,6 +9,15 @@ import javafx.scene.control.TextField;
 
 public class loginController {
 
+    private Node node;
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader fxmlLoader;
+    private Parent root;
+
+    private String password;
+    boolean passwordHidden;
+
     @FXML
     private TextField username_txt;
 
@@ -26,7 +35,6 @@ public class loginController {
                 username_txt.textProperty().isNotEmpty().and(password_txt.textProperty().isNotEmpty());
 
         signIn_btn.disableProperty().bind(textFieldEntered.not());
-
     }
 
 }

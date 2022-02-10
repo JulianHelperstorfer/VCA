@@ -22,7 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         PasswordManagement.writeUserData("weg", "ghswort");
-        Parent root = FXMLLoader.load(getClass().getResource("../view/createUser.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../view/homepage.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 630, 340));
         primaryStage.show();
@@ -52,4 +52,5 @@ public class Main extends Application {
 
         launch(args);
     }
+
 }

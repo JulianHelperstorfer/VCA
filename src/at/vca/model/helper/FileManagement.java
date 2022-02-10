@@ -4,6 +4,8 @@ import at.vca.model.User;
 import javafx.scene.control.Alert;
 
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /****
@@ -13,6 +15,16 @@ import java.util.Collection;
  ****/
 
 public class FileManagement {
+    static File userData;
+
+    static {
+        userData = new File("userData");
+        //System.out.println(file.exists());
+        if(!userData.exists()){
+            FileManagement.write(new ArrayList<User>(), userData);
+            //System.out.println("erstellt");
+        }
+    }
 
     /**
      * <h1><b>write</b></h1>
@@ -57,6 +69,10 @@ public class FileManagement {
             alert.showAndWait();
             return null;
         }
+    }
+
+    public static File getUserDataFile(){
+        return userData;
     }
 
 }
