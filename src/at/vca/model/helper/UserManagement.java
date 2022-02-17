@@ -29,7 +29,7 @@ public class UserManagement {
     }
 
     // returns true if the inputUsers username and password are correct
-    public static boolean hasSameUsernameAndPassword(User inputUser) {
+    public static boolean hasSameData(User inputUser) {
         boolean hasSameData = false;
         LinkedList<User> userList = (LinkedList<User>) FileManagement.read(FileManagement.getUserDataFile());
 

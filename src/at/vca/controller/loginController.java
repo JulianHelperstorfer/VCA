@@ -67,10 +67,11 @@ public class loginController {
         try {
             User user = new User(" "," ",username_txt.getText(),password_txt.getText(),username_txt.getText());
 
-            if (!UserManagement.hasSameUsernameOrEmail(user)){
+            if (!UserManagement.hasSameData(user)){
                 alert("Username oder Passwort sind falsch");
             }else{
                 //Anderes Fenster erscheint
+                System.out.println("siuu");
             }
         } catch (IllegalBlockSizeException e) {
             e.printStackTrace();
