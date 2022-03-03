@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.util.LinkedList;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /****
@@ -61,8 +62,14 @@ public class createUserController {
 
     private int counter=0;
 
-    Format format;
+    private String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
 
+    private Pattern pattern = Pattern.compile(regex);
+
+    /**
+     * <h1><b>initialize</b></h1>
+     * <p>Method to set up bindings as soon as the controller gets initialized</p>
+     */
     @FXML public void initialize(){ //Initialize Methode, wo bei start des Programmes dieser Code ausgeführt wird.
 
             //BooleanBinding for, when you want to create a User, to check if all TextFields are not empty and the Password equals the ConfirmPassword.
@@ -102,27 +109,32 @@ public class createUserController {
         //Creates a new User with the Data.
         User newUser = new User(userFirstName, userLastName, username, password, mail);
 
+
+
         if (password.equals(confirmPassword)){  //Checks, if the typed in Password equals the Confirmation Password.
 
             //Befüllt die users LinkedList, mit den Usern aus der File.
             users = (LinkedList<User>) FileManagement.read(FileManagement.getUserDataFile());
 
+            Matcher matcher = pattern.matcher(newUser.geteMail());
+
             // checks if the E-Mail or username is already taken
-            if (!UserManagement.hasSameUsernameOrEmail(newUser)){
+            if (!UserManagement.hasSameUsernameOrEmail(newUser) && matcher.matches()){
                 //if not, it adds the new User to the LinkedList and writes it into the file again.
                 users.add(newUser);
                 FileManagement.write(users, FileManagement.getUserDataFile());
-            }else{
+            }else if (UserManagement.hasSameUsernameOrEmail(newUser)){
                 //Shows Alert.
                 Alert newAlert = new Alert(Alert.AlertType.ERROR, "User already exists", ButtonType.CLOSE);
+                newAlert.showAndWait();
+            }else if (!matcher.matches()){
+                Alert newAlert = new Alert(Alert.AlertType.ERROR, "Email not formatted right!", ButtonType.CLOSE);
+                newAlert.showAndWait();
             }
-        }else{
-            //Shows Alert.
-            Alert newAlert = new Alert(Alert.AlertType.ERROR, "Password not correct!", ButtonType.CLOSE);
         }
 
         //Output for verification.
-        testArray = (LinkedList<User>) FileManagement.read(FileManagement.getUserDataFile());
+        /*testArray = (LinkedList<User>) FileManagement.read(FileManagement.getUserDataFile());
 
         for (User user: testArray) {
             System.out.println(user.toString());
