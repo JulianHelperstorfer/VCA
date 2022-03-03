@@ -15,14 +15,15 @@ import java.io.File;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         PasswordManagement.writeUserData("weg", "ghswort");
-        Parent root = FXMLLoader.load(getClass().getResource("../view/homepage.fxml"));
-        primaryStage.setTitle("Hello World");
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../view/homepage.fxml")));
+        primaryStage.setTitle("VCA");
         primaryStage.setScene(new Scene(root, 630, 340));
         primaryStage.show();
     }
@@ -34,7 +35,7 @@ public class Main extends Application {
         User user3 = new User("Baran", "Imre", "Lelelele1", "opskfp93238dsfoh", "imre@htl-wels.ar");
 
         LinkedList<User> userList = new LinkedList<>();
-        LinkedList<User> userList2 = new LinkedList<>();
+
 
         userList.add(user1);
         userList.add(user2);
@@ -45,7 +46,7 @@ public class Main extends Application {
         FileManagement.write(userList, file1);
 
 
-        userList2 = (LinkedList<User>) FileManagement.read(file1);
+
 
         launch(args);
     }
