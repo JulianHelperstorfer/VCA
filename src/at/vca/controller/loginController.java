@@ -79,8 +79,8 @@ public class loginController {
         try {
             User user = new User(" "," ",username_txt.getText(),password_txt.getText(),username_txt.getText());
 
-            if (!UserManagement.hasSameUsernameOrEmail(user)){
-                alert("Username oder Passwort sind falsch");
+            if (!UserManagement.hasSameData(user)){
+                alert("Username or password is wrong");
             }else{
                 //Anderes Fenster erscheint
                 alert("User signed in");
