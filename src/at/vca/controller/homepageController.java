@@ -17,6 +17,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/****
+ <p>Author: Julian Helperstorfer</p>
+ <p>Date: 27/01/2022 | 08:53</p>
+ <p>Description: Controller-class for the main menu view</p>
+ ****/
 public class homepageController {
 
     private Node node;
@@ -44,6 +49,10 @@ public class homepageController {
     @FXML // fx:id="button_exit"
     private Button button_exit; // Value injected by FXMLLoader
 
+    /**
+     * <h1><b>initialize</b></h1>
+     * <p>Method to set up bindings as soon as the controller gets initialized</p>
+     */
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() { //Initialize Methode, wo bei start des Programmes dieser Code ausgeführt wird.
         assert button_signIn != null : "fx:id=\"button_signIn\" was not injected: check your FXML file 'homepage.fxml'.";
@@ -53,6 +62,11 @@ public class homepageController {
 
     }
 
+    /**
+     * <h1><b>onSignIn</b></h1>
+     * <p>Method that switches to the sign in view when the sign in button is pressed</p>
+     * @param event ActionEvent parameter from the button
+     */
     public void onSignIn(ActionEvent event){    //If the Button is pressed, it switches to the  SignIn FXML, so you can switch between views.
         try {
             node = (Node) event.getSource();
@@ -66,6 +80,11 @@ public class homepageController {
         }
     }
 
+    /**
+     * <h1><b>onCreateAccount</b></h1>
+     * <p>Method that switches to the create account view when the create account button is pressed</p>
+     * @param event ActionEvent parameter from the button
+     */
     public void onCreateAccount(ActionEvent event){ //If the Button is pressed, it switches to the CreateAccount FXML, so you can switch between views.
         try {
             node = (Node) event.getSource();
@@ -79,6 +98,10 @@ public class homepageController {
         }
     }
 
+    /**
+     * <h1><b>onExit</b></h1>
+     * <p>Method that closes the program when the exit button is pressed</p>
+     */
     public void onExit(){
         System.exit(0);
     }

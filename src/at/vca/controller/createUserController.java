@@ -1,5 +1,4 @@
 package at.vca.controller;
-//Baran Imre 27.01.2022
 
 import at.vca.model.User;
 import at.vca.model.helper.FileManagement;
@@ -21,11 +20,14 @@ import javax.crypto.IllegalBlockSizeException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.InvalidKeyException;
-import java.text.Format;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
 
+/****
+ <p>Author: Baran Imre</p>
+ <p>Date: 27/01/2022 | 09:19</p>
+ <p>Description: Controller-class for the create user view</p>
+ ****/
 public class createUserController {
 
     private Node node;
@@ -57,7 +59,7 @@ public class createUserController {
 
     @FXML private ImageView eyeIcon;
 
-    int counter=0;
+    private int counter=0;
 
     Format format;
 
@@ -78,11 +80,12 @@ public class createUserController {
 
     }
 
-    //Vergeben in Scenebuilder
-    //Method, for when the Button to create a User is clicked. It creates a new User with the Data from the GUI Variables.
-    //It checks first of all, if the Username and or the Email already exists in another User.
-    //If it doesnt, it saves the User in the File.
-    public void saveUser() throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, FileNotFoundException {
+    /**
+     * <h1><b>saveUser</b></h1>
+     * <p>Method saves the user if it doesn't yet exist when the create account button is pressed</p>
+     * @param event ActionEvent parameter from the button
+     */
+    public void saveUser(ActionEvent event) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, FileNotFoundException {
         // User newUser = new User(firstName_txt.get)
         LinkedList<User> users = new LinkedList<>();
         LinkedList<User> testArray = new LinkedList<>();
@@ -123,10 +126,15 @@ public class createUserController {
 
         for (User user: testArray) {
             System.out.println(user.toString());
-        }
+        }*/
+        onSignIn(event);
     }
 
-
+    /**
+     * <h1><b>onSignIn</b></h1>
+     * <p>Method that switches to the sign in view when the sign in button is pressed</p>
+     * @param event ActionEvent parameter from the button
+     */
     public void onSignIn(ActionEvent event){    //If the Button is pressed, it switches the FXML so you can switch between views.
         try {
             node = (Node) event.getSource();
@@ -140,6 +148,11 @@ public class createUserController {
         }
     }
 
+    /**
+     * <h1><b>showPassw</b></h1>
+     * <p>Method that shows the password when the show password button is pressed</p>
+     * @param event ActionEvent parameter from the button
+     */
     @FXML
     void showPassw(ActionEvent event) {
         Image eyeIcon = new Image("at/vca/view/EyeIcon.png");

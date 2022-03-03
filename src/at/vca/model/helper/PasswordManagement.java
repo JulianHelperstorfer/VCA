@@ -12,9 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /****
- Author: Marko Jezidzic
- Date: 27/01/2022 | 09:47
- Description: Class to encrypt and decrypt Strings (mainly for passwords)
+ <p>Author: Marko Jezidzic</p>
+ <p>Date: 27/01/2022 | 09:47</p>
+ <p>Description: Class to encrypt and decrypt Strings (mainly for passwords)</p>
  ****/
 
 public class PasswordManagement {

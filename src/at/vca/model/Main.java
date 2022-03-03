@@ -2,7 +2,6 @@ package at.vca.model;
 
 import at.vca.model.helper.FileManagement;
 import at.vca.model.helper.PasswordManagement;
-import at.vca.model.helper.UserManagement;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +14,6 @@ import javax.crypto.NoSuchPaddingException;
 import java.io.File;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Main extends Application {

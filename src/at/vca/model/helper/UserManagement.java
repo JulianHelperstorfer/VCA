@@ -1,16 +1,21 @@
 package at.vca.model.helper;
 
 import at.vca.model.User;
-
-import java.io.File;
-import java.lang.reflect.Array;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+/****
+ <p>Author: Bertal Imre</p>
+ <p>Date: 27/01/2022 | 10:32</p>
+ <p>Description: Class that provides methods for user management</p>
+ ****/
 public class UserManagement {
 
-
-    // returns true, if inputUsers Username or E-Mail is already in the File
+    /**
+     * <h1><b>hasSameUsernameOrEmail</b></h1>
+     * <p>method for checking if the User already exist</p>
+     * @param inputUser User parameter for the user that's beeing checked
+     * @return boolean variable hasSameData (true = user already exists)
+     */
     public static boolean hasSameUsernameOrEmail(User inputUser) {
         boolean hasSameData = false;
         Collection<User> userList = FileManagement.read(FileManagement.getUserDataFile());
@@ -28,6 +33,12 @@ public class UserManagement {
         return hasSameData;
     }
 
+    /**
+     * <h1><b>hasSameUsernameAndPassword</b></h1>
+     * <p>method for checking if the user's username and password are already used</p>
+     * @param inputUser User parameter for the user that's beeing checked
+     * @return boolean variable hasSameData (true = user already exists)
+     */
     // returns true if the inputUsers username and password are correct
     public static boolean hasSameUsernameAndPassword(User inputUser) {
         boolean hasSameData = false;

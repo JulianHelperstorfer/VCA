@@ -1,12 +1,9 @@
 package at.vca.controller;
-//Baran Imre 27.01.2022
 
 import at.vca.model.User;
-import at.vca.model.helper.FileManagement;
 import at.vca.model.helper.UserManagement;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,17 +13,20 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
-import java.io.File;
 import java.io.IOException;
 import java.security.InvalidKeyException;
-import java.util.ArrayList;
 
+/****
+ <p>Author: Baran Imre</p>
+ <p>Date: 27/01/2022 | 09:23</p>
+ <p>Description: Controller-class for the login view</p>
+ ****/
 public class loginController {
 
     private Node node;
@@ -34,9 +34,6 @@ public class loginController {
     private Scene scene;
     private FXMLLoader fxmlLoader;
     private Parent root;
-
-    private String password;
-    boolean passwordHidden;
 
     //defines the FXML Variables.
     @FXML
@@ -50,6 +47,10 @@ public class loginController {
 
     @FXML private Button showPassw_btn;
 
+    /**
+     * <h1><b>initialize</b></h1>
+     * <p>Method to set up bindings as soon as the controller gets initialized</p>
+     */
     @FXML public void initialize(){ //Initialize Methode, when this Programm starts, it runs through this Code.
 
         //BooleanBinding to check, if the username and password have been entered.
@@ -61,6 +62,11 @@ public class loginController {
         signIn_btn.disableProperty().bind(textFieldEntered.not());
     }
 
+    /**
+     * <h1><b>loginButtonPressed</b></h1>
+     * <p>method that checks if the user already exists when the login button is pressed</p>
+     * @param event ActionEvent parameter for the button
+     */
     public void loginButtonPressed(ActionEvent event) {
         System.out.println("test");
 
@@ -71,6 +77,7 @@ public class loginController {
                 alert("Username oder Passwort sind falsch");
             }else{
                 //Anderes Fenster erscheint
+                alert("User signed in");
             }
         } catch (IllegalBlockSizeException e) {
             e.printStackTrace();
@@ -82,12 +89,22 @@ public class loginController {
 
     }
 
+    /**
+     * <h1><b>alert</b></h1>
+     * <p>method that shows an alert</p>
+     * @param text String parameter that gets shown in the alert
+     */
     public void alert(String text){ //Method, to show an Alert.
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         a.setContentText(text);
         a.show();
     }
 
+    /**
+     * <h1><b>onCreateAccount</b></h1>
+     * <p>method that changes the view to the createUser view when the create Account button is pressed</p>
+     * @param event ActionEvent parameter for the button
+     */
     public void onCreateAccount(ActionEvent event){
         try {
             node = (Node) event.getSource();
@@ -102,23 +119,32 @@ public class loginController {
 
     }
 
+    /**
+     * <h1><b>onShowPassw</b></h1>
+     * <p>method that shows or hides the password when the showPassWord-button is pressed</p>
+     * @param event ActionEvent parameter for the button
+     */
+    @FXML
+    void showPassw(ActionEvent event) {
 
+        Image eyeIcon = new Image("at/vca/view/EyeIcon.png");
+        Image eyeIcon2 = new Image("at/vca/view/EyeIcon2.jpg");
 
-    public void onShowPassword(){
-        /*if(passwordHidden){
-            password = "";
-            password = password_txt.getText();
-            password_txt.clear();
-            System.out.println(password);
-            password_txt.setPromptText(password);
-            passwordHidden = false;
-        }else{
-            password_txt.setPromptText("Password");
-            System.out.println(password);
-            password_txt.setText(password);
-            passwordHidden = true;
-        }*/
-        //not working correctly
+        if (counter==0){
+            this.eyeIcon.setImage(eyeIcon2);
+            counter++;
+            password_txt.setText(password_pwf.getText());
+            password_txt.setVisible(true);
+            password_pwf.setVisible(false);
+
+        }else {
+            this.eyeIcon.setImage(eyeIcon);
+            counter--;
+            password_pwf.setText(password_txt.getText());
+            password_pwf.setVisible(true);
+            password_txt.setVisible(false);
+
+        }
+
     }
-
 }

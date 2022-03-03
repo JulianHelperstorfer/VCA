@@ -10,9 +10,9 @@ import java.security.InvalidKeyException;
 import java.util.Arrays;
 
 /****
- Author: Bertal Imre
- Date: 27/01/2022 | 09:08
- Description: Just a simple user class.
+ <p>Author: Bertal Imre</p>
+ <p>Date: 27/01/2022 | 09:08</p>
+ <p>Description: Just a simple user class.</p>
  ****/
 
 public class User implements Serializable {

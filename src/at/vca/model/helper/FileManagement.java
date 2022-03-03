@@ -4,14 +4,13 @@ import at.vca.model.User;
 import javafx.scene.control.Alert;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 
 /****
- Author: Julian Helperstorfer
- Date: 27/01/2022 | 09:13
- Description: Class to manage file-input and output
+ <p>Author: Julian Helperstorfer</p>
+ <p>Date: 27/01/2022 | 09:13</p>
+ <p>Description: Class to manage file-input and output</p>
  ****/
 
 public class FileManagement {
