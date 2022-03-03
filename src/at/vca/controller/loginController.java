@@ -39,13 +39,19 @@ public class loginController {
     @FXML
     private TextField username_txt;
 
-    @FXML private PasswordField password_txt;
+    @FXML private TextField password_txt;
+
+    @FXML private PasswordField password_pwf;
 
     @FXML private Button signIn_btn;
+
+    @FXML private ImageView eyeIcon;
 
     @FXML private Button createAcc_btn;
 
     @FXML private Button showPassw_btn;
+
+    private int counter;
 
     /**
      * <h1><b>initialize</b></h1>
