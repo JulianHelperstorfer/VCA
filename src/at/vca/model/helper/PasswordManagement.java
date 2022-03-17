@@ -26,51 +26,35 @@ public class PasswordManagement {
 
 
     static {
-        // Key generator with encrypt code
-        try {
-            kg = KeyGenerator.getInstance("AES");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        // Initializing keysizee
-        kg.init(128);
-        // Creating a secret key
-        secKey = kg.generateKey();
+        if(!(new File("key").length() >=0)) {
+            // Key generator with encrypt code
+            try {
+                kg = KeyGenerator.getInstance("AES");
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            // Initializing keysizee
+            kg.init(128);
+            // Creating a secret key
+            secKey = kg.generateKey();
 
-        // Save key for Reuse
-        try {
-            saveKey(secKey);
-        } catch (IOException ex) {
-            Logger.getLogger(PasswordManagement.class.getName()).log(Level.SEVERE, null, ex);
+            // Save key for Reuse
+            try {
+                saveKey(secKey);
+            } catch (IOException ex) {
+                Logger.getLogger(PasswordManagement.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            //key einlesen
         }
-        try {
-            cipher = Cipher.getInstance("AES");
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
-            e.printStackTrace();
-        }
+            try {
+                cipher = Cipher.getInstance("AES");
+            } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
+                e.printStackTrace();
+            }
+
     }
 
-    /**
-     * <h1><b>writeUserData</b></h1>
-     * <p>method for writing userdata (username and password)</p>
-     * @param username String parameter for the username that should get encrypted
-     * @param password String parameter for the password that should get encrypted
-     */
-    public static void writeUserData(String username,String password) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-
-        byte[] sUserEncrypt = encrypt(username);
-        byte[] sPassEncrypt = encrypt(password);
-
-        System.out.println("user: "+ new String(sUserEncrypt));
-        System.out.println("pass: "+ new String(sPassEncrypt));
-
-        byte[] sUserDecrypt = decrypt(sUserEncrypt);
-        byte[] sPassDecrypt = decrypt(sPassEncrypt);
-
-        System.out.println("user: "+new String(sUserDecrypt));
-        System.out.println("pass: "+new String(sPassDecrypt));
-
-    }
 
     /**
      * <h1><b>encrypt</b></h1>
@@ -91,10 +75,10 @@ public class PasswordManagement {
      * @param dataEncrypt byte-array paramater that should get decrypted
      * @return decrypted byte-array
      */
-    public static  byte[] decrypt(byte[] dataEncrypt) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+    public static  String decrypt(byte[] dataEncrypt) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
 
         cipher.init(Cipher.DECRYPT_MODE, secKey);
-        return cipher.doFinal(dataEncrypt);
+        return new String(cipher.doFinal(dataEncrypt));
 
     }
 

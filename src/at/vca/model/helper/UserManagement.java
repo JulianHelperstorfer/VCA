@@ -1,6 +1,10 @@
 package at.vca.model.helper;
 
 import at.vca.model.User;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import java.security.InvalidKeyException;
 import java.util.*;
 
 /****
@@ -40,13 +44,20 @@ public class UserManagement {
      * @return boolean variable hasSameData (true = user already exists)
      */
     // returns true if the inputUsers username and password are correct
-    public static boolean hasSameData(User inputUser) {
+    public static boolean hasSameData(User inputUser) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+
         boolean hasSameData = false;
         LinkedList<User> userList = (LinkedList<User>) FileManagement.read(FileManagement.getUserDataFile());
 
         if (hasSameUsernameOrEmail(inputUser)) {
-                  if (Arrays.equals(userList.get(userList.indexOf(inputUser)).getPassword(), inputUser.getPassword()))
+                  //if (Arrays.equals(userList.get(userList.indexOf(inputUser)).getPassword(), inputUser.getPassword()))
+                  //  hasSameData = true;
+
+            System.out.println("Username/E-Mail richtig");
+                if(PasswordManagement.decrypt(userList.get(userList.indexOf(inputUser)).getPassword()).equals(PasswordManagement.decrypt(inputUser.getPassword()))){
                     hasSameData = true;
+                    System.out.println("Passwort richtig");
+                }
             }
 
         return hasSameData;

@@ -1,6 +1,7 @@
 package at.vca.controller;
 
 import at.vca.model.User;
+import at.vca.model.helper.FileManagement;
 import at.vca.model.helper.UserManagement;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import java.io.IOException;
 import java.security.InvalidKeyException;
+import java.util.LinkedList;
 
 /****
  <p>Author: Baran Imre</p>
@@ -66,6 +68,9 @@ public class loginController {
         //Binds the SignIn-Button Property to the BooleanBinding
         //As long as the BooleanBinding isnt true, it will be deactivated.
         signIn_btn.disableProperty().bind(textFieldEntered.not());
+
+        LinkedList<User> users = new LinkedList<>();
+        users = (LinkedList<User>) FileManagement.read(FileManagement.getUserDataFile());
     }
 
     /**
@@ -78,6 +83,8 @@ public class loginController {
 
         try {
             User user = new User(" "," ",username_txt.getText(),password_txt.getText(),username_txt.getText());
+
+
 
             if (!UserManagement.hasSameData(user)){
                 alert("Username or password is wrong");

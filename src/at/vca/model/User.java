@@ -4,7 +4,6 @@ import at.vca.model.helper.PasswordManagement;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
-import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.security.InvalidKeyException;
 import java.util.Arrays;
@@ -22,7 +21,6 @@ public class User implements Serializable {
     private byte[] password;
     private String eMail;
 
-
     //Constructor, that's used when a User is beeing created.
     public User(String firstName, String lastName, String userName, String password, String eMail) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException{
         //Sets the
@@ -33,7 +31,6 @@ public class User implements Serializable {
         this.password = PasswordManagement.encrypt(password);
         this.eMail = eMail;
     }
-
 
     //Getter and Setter für this Classes Variables.
     public String getFirstName() {
@@ -75,7 +72,6 @@ public class User implements Serializable {
     public void seteMail(String eMail) {
         this.eMail = eMail;
     }
-
 
     public boolean equals(Object o) {   //Compares 2 Users and checks, if they have the same Email or Username.
         if (this == o) return true;
