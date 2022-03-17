@@ -20,17 +20,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../view/homepage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../view/buildAPc.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 630, 340));
+        primaryStage.setScene(new Scene(root, 400, 500));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         String user = "asd";
-        byte[] test = PasswordManagement.encrypt(user);
-        System.out.println(new String(PasswordManagement.decrypt(test)));
+        //byte[] test = PasswordManagement.encrypt(user);
+        //System.out.println(new String(PasswordManagement.decrypt(test)));
 
         launch(args);
     }
