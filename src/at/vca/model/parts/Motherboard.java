@@ -12,12 +12,15 @@ public class Motherboard extends Component{
     private String chipset;
     //the socket for the CPU on this motherboard
     private Socket socket;
+    //the size standard of this motherboard
+    private String sizeStandard;
 
     //constructor
-    public Motherboard(String name, double price, int powerConsumption, String chipset, Socket socket) {
+    public Motherboard(String name, double price, int powerConsumption, String chipset, Socket socket, String sizeStandard) {
         super(name, price, powerConsumption);
         this.chipset = chipset;
         this.socket = socket;
+        this.sizeStandard = sizeStandard;
     }
 
     //getter / setter

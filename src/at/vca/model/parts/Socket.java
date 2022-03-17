@@ -8,22 +8,22 @@ package at.vca.model.parts;
 
 public class Socket {
 
+    //name of the socket
+    private String name;
     //the amount of contacts on this socket
-    private int contacts;
+    //private int contacts;
     //the name of the bus protocol of this socket
-    private String busProtocol;
+    //private String busProtocol;
     //the tact of the bus of this socket
-    private int busTact;
+    //private int busTact;
 
     //constructor
-    public Socket(int contacts, String busProtocol, int busTact) {
-        this.contacts = contacts;
-        this.busProtocol = busProtocol;
-        this.busTact = busTact;
+    public Socket(String name) {
+        this.name = name;
     }
 
     //getter / setter
-    public int getContacts() {
+    /*public int getContacts() {
         return contacts;
     }
 
@@ -45,5 +45,5 @@ public class Socket {
 
     public void setBusTact(int busTact) {
         this.busTact = busTact;
-    }
+    }*/
 }

@@ -1,10 +1,13 @@
 package at.vca.model.helper;
 
 import javax.crypto.*;
-import java.io.File;
+import javax.crypto.spec.SecretKeySpec;
 
+
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -23,10 +26,12 @@ public class PasswordManagement {
     static KeyGenerator kg;
     static SecretKey secKey;
     static Cipher cipher;
+    static File file=new File("key");
 
 
     static {
-        if(!(new File("key").length() >=0)) {
+
+        if(!file.exists()){
             // Key generator with encrypt code
             try {
                 kg = KeyGenerator.getInstance("AES");
@@ -43,10 +48,20 @@ public class PasswordManagement {
                 saveKey(secKey);
             } catch (IOException ex) {
                 Logger.getLogger(PasswordManagement.class.getName()).log(Level.SEVERE, null, ex);
+
             }
-        }else{
-            //key einlesen
+
         }
+            //key einlesen
+        else{
+            try {
+                System.out.println(loadKey());
+                secKey=loadKey();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
             try {
                 cipher = Cipher.getInstance("AES");
             } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
@@ -89,12 +104,15 @@ public class PasswordManagement {
      */
     private static void saveKey(SecretKey secKey) throws IOException {
 
-        FileOutputStream fos = new FileOutputStream(new File("key"));
+        FileOutputStream fos = new FileOutputStream("key");
 
         fos.write(secKey.getEncoded());
         fos.flush();
         fos.close();
     }
 
+    private static  SecretKey loadKey() throws IOException {
+        return new SecretKeySpec(Files.readAllBytes(file.toPath()),"AES");
+    }
 }
 
