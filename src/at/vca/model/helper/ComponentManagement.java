@@ -259,7 +259,7 @@ public class ComponentManagement {
         //HDDs
         Component toshibaEnterpriseCapacityMG09ACA18TB = new Storage("Toshiba Enterprise Capacity MG09ACA 18TB, 512e, SATA 6Gb/s", 289, 9, 18000);
         Component WesternDigitalWDRedPlus4TB = new Storage("Western Digital WD Red Plus 4TB, SATA 6Gb/s", 89.90, 5, 4000);
-        Component SeagateBarraCudaCompute5TB = new Storage("Seagate BarraCuda Compute 5TB, 2.5\", SATA 6Gb/s", 122.81, 3, 5000);
+        Component SeagateBarraCudaCompute5TB = new Storage("Seagate BarraCuda Compute 5TB, 2.5, SATA 6Gb/s", 122.81, 3, 5000);
         Component SeagateIronWolfNASHDDRescue2TB = new Storage("Seagate IronWolf NAS HDD +Rescue 2TB, SATA 6Gb/s", 151.90, 5, 2000);
         Component ToshibaEnterpriseCapacityMG07ACA12TB = new Storage("Toshiba Enterprise Capacity MG07ACA 12TB, 512e, SATA 6Gb/s", 212.31, 8, 12000);
 

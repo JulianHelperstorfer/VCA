@@ -3,7 +3,6 @@ package at.vca.controller;
 import at.vca.model.helper.ComponentManagement;
 import at.vca.model.parts.Component;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +13,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Baran Imre 17.03.2022

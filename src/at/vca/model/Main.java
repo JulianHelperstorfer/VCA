@@ -1,24 +1,13 @@
 package at.vca.model;
 
 import at.vca.model.helper.ComponentManagement;
-import at.vca.model.helper.FileManagement;
-import at.vca.model.helper.PasswordManagement;
-import at.vca.model.parts.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import java.io.File;
 import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Objects;
 
 public class Main extends Application {
