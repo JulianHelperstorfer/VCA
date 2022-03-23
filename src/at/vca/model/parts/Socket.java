@@ -6,10 +6,8 @@ package at.vca.model.parts;
  <p>Description: Class for Sockets</p>
  ****/
 
-public class Socket {
+public class Socket extends Component{
 
-    //name of the socket
-    private String name;
     //the amount of contacts on this socket
     //private int contacts;
     //the name of the bus protocol of this socket
@@ -18,8 +16,8 @@ public class Socket {
     //private int busTact;
 
     //constructor
-    public Socket(String name) {
-        this.name = name;
+    public Socket(String name, double price, int powerConsumption) {
+        super(name, price, powerConsumption);
     }
 
     //getter / setter

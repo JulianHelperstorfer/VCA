@@ -53,7 +53,7 @@ public class loginController {
 
     @FXML private Button showPassw_btn;
 
-    private int counter;
+    private int counter = 1;
 
     /**
      * <h1><b>initialize</b></h1>
@@ -71,6 +71,8 @@ public class loginController {
 
         LinkedList<User> users = new LinkedList<>();
         users = (LinkedList<User>) FileManagement.read(FileManagement.getUserDataFile());
+
+        showPassw(new ActionEvent());
     }
 
     /**
@@ -90,7 +92,20 @@ public class loginController {
                 alert("Username or password is wrong");
             }else{
                 //Anderes Fenster erscheint
-                alert("User signed in");
+                //alert("User signed in");
+                try {
+                    node = (Node) event.getSource();
+                    stage = (Stage) node.getScene().getWindow();
+                    stage.setWidth(420);
+                    stage.setHeight(530);
+                    scene = stage.getScene();
+                    fxmlLoader = new FXMLLoader(getClass().getResource("../view/buildAPc.fxml"));
+                    root = (Parent) fxmlLoader.load();
+                    scene.setRoot(root);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
             }
         } catch (IllegalBlockSizeException e) {
             e.printStackTrace();

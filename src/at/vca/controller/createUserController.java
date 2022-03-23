@@ -72,14 +72,14 @@ public class createUserController {
      */
     @FXML public void initialize(){ //Initialize Methode, wo bei start des Programmes dieser Code ausgeführt wird.
 
-            //BooleanBinding for, when you want to create a User, to check if all TextFields are not empty and the Password equals the ConfirmPassword.
+        //BooleanBinding for, when you want to create a User, to check if all TextFields are not empty and the Password equals the ConfirmPassword.
         BooleanBinding textFieldEntered =
                 firstName_txt.textProperty().isNotEmpty().
                         and(lastName_txt.textProperty().isNotEmpty())
                         .and(username_txt.textProperty().isNotEmpty())
                         .and(email_txt.textProperty().isNotEmpty())
-                        .and(password_txt.textProperty().isNotEmpty())
-                        .and(confirmPassword_txt.textProperty().isEqualTo(password_txt.textProperty()));
+                        .and(password_pwf.textProperty().isNotEmpty())
+                        .and(confirmPassword_pwf.textProperty().isEqualTo(password_pwf.textProperty()));
 
         //Binds the Property of the createAccount-Button to the Booleanbinding.
         //Means, that as long as not all criterias are fullfilled, it will be disabled.
@@ -102,9 +102,9 @@ public class createUserController {
         userFirstName = firstName_txt.getText();
         userLastName = lastName_txt.getText();
         username = username_txt.getText();
-        password = password_txt.getText();
+        password = password_pwf.getText();
         mail = email_txt.getText();
-        confirmPassword = confirmPassword_txt.getText();
+        confirmPassword = confirmPassword_pwf.getText();
 
         //Creates a new User with the Data.
         User newUser = new User(userFirstName, userLastName, username, password, mail);
