@@ -63,7 +63,7 @@ public class loginController {
 
         //BooleanBinding to check, if the username and password have been entered.
         BooleanBinding textFieldEntered =
-                username_txt.textProperty().isNotEmpty().and(password_txt.textProperty().isNotEmpty());
+                username_txt.textProperty().isNotEmpty().and(password_pwf.textProperty().isNotEmpty());
 
         //Binds the SignIn-Button Property to the BooleanBinding
         //As long as the BooleanBinding isnt true, it will be deactivated.
@@ -84,7 +84,7 @@ public class loginController {
         System.out.println("test");
 
         try {
-            User user = new User(" "," ",username_txt.getText(),password_txt.getText(),username_txt.getText());
+            User user = new User(" "," ",username_txt.getText(),password_pwf.getText(),username_txt.getText());
 
 
 
