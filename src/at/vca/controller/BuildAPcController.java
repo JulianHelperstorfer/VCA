@@ -5,8 +5,6 @@ import at.vca.model.parts.Component;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,18 +13,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
-/**
- * Baran Imre 17.03.2022
- * onCancelButtonClick
- * Startseite Scene wird geöffnet
- * buildAPc Scene wird geschlossen
- */
+public class BuildAPcController {
 
-public class buildAPcController {
+    public static ArrayList<Component> builtPC;
+    private Node node;
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader fxmlLoader;
+    private Parent root;
 
     @FXML
     private ChoiceBox<Component> cbb_case;
@@ -60,7 +59,8 @@ public class buildAPcController {
 
     @FXML
     void onCancelButtonClick(ActionEvent event) {
-
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Cancelling configuration...");
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../view/homepage.fxml"));
             Stage stage = new Stage();
@@ -69,6 +69,8 @@ public class buildAPcController {
             stage.setResizable(false);
             stage.show();
             ((Node)(event.getSource())).getScene().getWindow().hide();
+            System.out.println("[Log] Finished cancelling configuration!");
+            System.out.println("--------------------------------------------------");
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -76,8 +78,28 @@ public class buildAPcController {
     }
 
     @FXML
-    void onContinueButtonClick() {
-
+    void onContinueButtonClick(ActionEvent event) {
+        Component pcCase = cbb_case.getValue();
+        Component mainboard = cbb_mainboard.getValue();
+        Component cpu = cbb_cpu.getValue();
+        Component cpuCooler = cbb_cpucooler.getValue();
+        Component gpu = cbb_gpu.getValue();
+        Component ram = cbb_ram.getValue();
+        Component storage = cbb_storage.getValue();
+        Component pSupply = cbb_psupply.getValue();
+        Component fan = cbb_fan.getValue();
+        builtPC = new ArrayList<>(Arrays.asList(pcCase, mainboard, cpu, cpuCooler, gpu, ram, storage, pSupply, fan));
+        try {
+            node = (Node) event.getSource();
+            stage = (Stage) node.getScene().getWindow();
+            scene = stage.getScene();
+            stage.setWidth(870);
+            fxmlLoader = new FXMLLoader(getClass().getResource("../view/showPrice.fxml"));
+            root = (Parent) fxmlLoader.load();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML public void initialize(){

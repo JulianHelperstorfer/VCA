@@ -30,6 +30,8 @@ public class PasswordManagement {
 
 
     static {
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Initializing PasswordManagement...");
 
         if(!file.exists()){
             // Key generator with encrypt code
@@ -68,6 +70,8 @@ public class PasswordManagement {
                 e.printStackTrace();
             }
 
+        System.out.println("[Log] Finished initializing PasswordManagement!");
+        System.out.println("--------------------------------------------------");
     }
 
 
@@ -78,8 +82,13 @@ public class PasswordManagement {
      * @return encrypted String
      */
     public   static  byte[] encrypt(String data) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Encrypting string \""+data+"\"...");
 
         cipher.init(Cipher.ENCRYPT_MODE, secKey);
+
+        System.out.println("[Log] Finished encrypting string \""+data+"\"!");
+        System.out.println("--------------------------------------------------");
         return cipher.doFinal(data.getBytes());
 
     }
@@ -91,8 +100,13 @@ public class PasswordManagement {
      * @return decrypted byte-array
      */
     public static  String decrypt(byte[] dataEncrypt) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Decrypting string...");
 
         cipher.init(Cipher.DECRYPT_MODE, secKey);
+
+        System.out.println("[Log] Finished decrypting string!");
+        System.out.println("--------------------------------------------------");
         return new String(cipher.doFinal(dataEncrypt));
 
     }
@@ -103,16 +117,28 @@ public class PasswordManagement {
      * @param secKey SecretKey parameter that should get saved
      */
     private static void saveKey(SecretKey secKey) throws IOException {
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Saving key...");
 
         FileOutputStream fos = new FileOutputStream("key");
 
         fos.write(secKey.getEncoded());
         fos.flush();
         fos.close();
+
+        System.out.println("[Log] Finished saving key!");
+        System.out.println("--------------------------------------------------");
     }
 
     private static  SecretKey loadKey() throws IOException {
-        return new SecretKeySpec(Files.readAllBytes(file.toPath()),"AES");
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Loading key...");
+
+        SecretKeySpec sks = new SecretKeySpec(Files.readAllBytes(file.toPath()),"AES");
+
+        System.out.println("[Log] Finished loading key!");
+        System.out.println("--------------------------------------------------");
+        return sks;
     }
 }
 

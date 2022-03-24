@@ -22,7 +22,7 @@ import javafx.stage.Stage;
  <p>Date: 27/01/2022 | 08:53</p>
  <p>Description: Controller-class for the main menu view</p>
  ****/
-public class homepageController {
+public class HomepageController {
 
     private Node node;
     private Stage stage;
@@ -54,7 +54,7 @@ public class homepageController {
      * <p>Method to set up bindings as soon as the controller gets initialized</p>
      */
     @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() { //Initialize Methode, wo bei start des Programmes dieser Code ausgeführt wird.
+    void initialize() {
         System.out.println("--------------------------------------------------");
         System.out.println("[Log] Initializing homepage...");
         assert button_signIn != null : "fx:id=\"button_signIn\" was not injected: check your FXML file 'homepage.fxml'.";
@@ -94,6 +94,8 @@ public class homepageController {
      * @param event ActionEvent parameter from the button
      */
     public void onCreateAccount(ActionEvent event){ //If the Button is pressed, it switches to the CreateAccount FXML, so you can switch between views.
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Switching to create account page...");
         try {
             node = (Node) event.getSource();
             stage = (Stage) node.getScene().getWindow();
@@ -101,6 +103,8 @@ public class homepageController {
             fxmlLoader = new FXMLLoader(getClass().getResource("../view/createUser.fxml"));
             root = (Parent) fxmlLoader.load();
             scene.setRoot(root);
+            System.out.println("[Log] Finished switching to create account page!");
+            System.out.println("--------------------------------------------------");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,6 +115,8 @@ public class homepageController {
      * <p>Method that closes the program when the exit button is pressed</p>
      */
     public void onExit(){
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Exiting...");
         System.exit(0);
     }
 }

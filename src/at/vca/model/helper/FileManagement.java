@@ -17,12 +17,17 @@ public class FileManagement {
     static File userData;
 
     static {
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Initializing FileManagement...");
+
         userData = new File("userData");
         //System.out.println(file.exists());
         if(!userData.exists()){
             FileManagement.write(new ArrayList<User>(), userData);
             //System.out.println("erstellt");
         }
+        System.out.println("[Log] Finished initializing FileManagement!");
+        System.out.println("--------------------------------------------------");
     }
 
     /**
@@ -31,16 +36,21 @@ public class FileManagement {
      * @param users
      * @param file
      */
-    //writing into a file
     public static void write(Collection<User> users, File file){
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Writing collection into file \""+file.getName()+"\"...");
 
         try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)));) {
 
             //writing objects
             oos.writeObject(users);
 
+            System.out.println("[Log] Finished writing into file!");
+            System.out.println("--------------------------------------------------");
             //Error-handling
         } catch (IOException e) {
+            System.out.println("[Log] Error while writing into file! (destination-file not found)");
+            System.out.println("--------------------------------------------------");
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Destination-file not found!");
             alert.showAndWait();
@@ -53,16 +63,21 @@ public class FileManagement {
      * @param file
      * @return
      */
-    //reading a file
     public static Collection<User> read(File file){
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Reading collection from file \""+file.getName()+"\"...");
 
         try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))){
 
             //reading objects
+            System.out.println("[Log] Finished reading collection from file!");
+            System.out.println("--------------------------------------------------");
             return (Collection<User>) ois.readObject();
 
             //Error-handling
         } catch (IOException | ClassNotFoundException e) {
+            System.out.println("[Log] Error while reading collection from file!");
+            System.out.println("--------------------------------------------------");
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Error while reading source-file!");
             alert.showAndWait();

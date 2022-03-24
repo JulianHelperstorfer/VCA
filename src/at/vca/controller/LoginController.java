@@ -29,7 +29,7 @@ import java.util.LinkedList;
  <p>Date: 27/01/2022 | 09:23</p>
  <p>Description: Controller-class for the login view</p>
  ****/
-public class loginController {
+public class LoginController {
 
     private Node node;
     private Stage stage;
@@ -59,7 +59,9 @@ public class loginController {
      * <h1><b>initialize</b></h1>
      * <p>Method to set up bindings as soon as the controller gets initialized</p>
      */
-    @FXML public void initialize(){ //Initialize Methode, when this Programm starts, it runs through this Code.
+    @FXML public void initialize(){
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Initializing login page...");
 
         //BooleanBinding to check, if the username and password have been entered.
         BooleanBinding textFieldEntered =
@@ -73,6 +75,9 @@ public class loginController {
         users = (LinkedList<User>) FileManagement.read(FileManagement.getUserDataFile());
 
         showPassw(new ActionEvent());
+
+        System.out.println("[Log] Finished initializing login page...");
+        System.out.println("--------------------------------------------------");
     }
 
     /**
@@ -81,7 +86,8 @@ public class loginController {
      * @param event ActionEvent parameter for the button
      */
     public void loginButtonPressed(ActionEvent event) {
-        System.out.println("test");
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Logging in user...");
 
         try {
             User user = new User(" "," ",username_txt.getText(),password_pwf.getText(),username_txt.getText());
@@ -89,6 +95,8 @@ public class loginController {
 
 
             if (!UserManagement.hasSameData(user)){
+                System.out.println("[Log] Failed to log in user! (username or password is wrong)");
+                System.out.println("--------------------------------------------------");
                 alert("Username or password is wrong");
             }else{
                 //Anderes Fenster erscheint
@@ -102,6 +110,8 @@ public class loginController {
                     fxmlLoader = new FXMLLoader(getClass().getResource("../view/buildAPc.fxml"));
                     root = (Parent) fxmlLoader.load();
                     scene.setRoot(root);
+                    System.out.println("[Log] Successfully logged in user!");
+                    System.out.println("--------------------------------------------------");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -134,6 +144,8 @@ public class loginController {
      * @param event ActionEvent parameter for the button
      */
     public void onCreateAccount(ActionEvent event){
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Switching to create account page...");
         try {
             node = (Node) event.getSource();
             stage = (Stage) node.getScene().getWindow();
@@ -141,6 +153,8 @@ public class loginController {
             fxmlLoader = new FXMLLoader(getClass().getResource("../view/createUser.fxml"));
             root = (Parent) fxmlLoader.load();
             scene.setRoot(root);
+            System.out.println("[Log] Finished switching to create account page!");
+            System.out.println("--------------------------------------------------");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -154,7 +168,6 @@ public class loginController {
      */
     @FXML
     void showPassw(ActionEvent event) {
-
         Image eyeIcon = new Image("at/vca/view/EyeIcon.png");
         Image eyeIcon2 = new Image("at/vca/view/EyeIcon2.jpg");
 

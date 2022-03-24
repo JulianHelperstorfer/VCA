@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
  <p>Date: 27/01/2022 | 09:19</p>
  <p>Description: Controller-class for the create user view</p>
  ****/
-public class createUserController {
+public class CreateUserController {
 
     private Node node;
     private Stage stage;
@@ -62,15 +62,17 @@ public class createUserController {
 
     private int counter=0;
 
-    private String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+    private final String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
 
-    private Pattern pattern = Pattern.compile(regex);
+    private final Pattern pattern = Pattern.compile(regex);
 
     /**
      * <h1><b>initialize</b></h1>
      * <p>Method to set up bindings as soon as the controller gets initialized</p>
      */
-    @FXML public void initialize(){ //Initialize Methode, wo bei start des Programmes dieser Code ausgeführt wird.
+    @FXML public void initialize(){
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Initializing create user controller...");
 
         //BooleanBinding for, when you want to create a User, to check if all TextFields are not empty and the Password equals the ConfirmPassword.
         BooleanBinding textFieldEntered =
@@ -85,6 +87,9 @@ public class createUserController {
         //Means, that as long as not all criterias are fullfilled, it will be disabled.
         createAcc_btn.disableProperty().bind(textFieldEntered.not());
 
+        System.out.println("[Log] Finished initializing create user controller!");
+        System.out.println("--------------------------------------------------");
+
     }
 
     /**
@@ -93,6 +98,9 @@ public class createUserController {
      * @param event ActionEvent parameter from the button
      */
     public void saveUser(ActionEvent event) throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, FileNotFoundException {
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Saving user...");
+
         // User newUser = new User(firstName_txt.get)
         LinkedList<User> users = new LinkedList<>();
         LinkedList<User> testArray = new LinkedList<>();
@@ -123,12 +131,18 @@ public class createUserController {
                 //if not, it adds the new User to the LinkedList and writes it into the file again.
                 users.add(newUser);
                 FileManagement.write(users, FileManagement.getUserDataFile());
+                System.out.println("[Log] Successfully saved user!");
+                System.out.println("--------------------------------------------------");
             }else if (UserManagement.hasSameUsernameOrEmail(newUser)){
                 //Shows Alert.
                 Alert newAlert = new Alert(Alert.AlertType.ERROR, "User already exists", ButtonType.CLOSE);
+                System.out.println("[Log] Error while saving user! (User already exists)");
+                System.out.println("--------------------------------------------------");
                 newAlert.showAndWait();
             }else if (!matcher.matches()){
                 Alert newAlert = new Alert(Alert.AlertType.ERROR, "Email not formatted right!", ButtonType.CLOSE);
+                System.out.println("[Log] Error while saving user! (Email not formatted right)");
+                System.out.println("--------------------------------------------------");
                 newAlert.showAndWait();
             }
         }
@@ -147,7 +161,9 @@ public class createUserController {
      * <p>Method that switches to the sign in view when the sign in button is pressed</p>
      * @param event ActionEvent parameter from the button
      */
-    public void onSignIn(ActionEvent event){    //If the Button is pressed, it switches the FXML so you can switch between views.
+    public void onSignIn(ActionEvent event){
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Switching to sign-in page...");
         try {
             node = (Node) event.getSource();
             stage = (Stage) node.getScene().getWindow();
@@ -155,6 +171,8 @@ public class createUserController {
             fxmlLoader = new FXMLLoader(getClass().getResource("../view/login.fxml"));
             root = (Parent) fxmlLoader.load();
             scene.setRoot(root);
+            System.out.println("[Log] Finished switching to sign-in page!");
+            System.out.println("--------------------------------------------------");
         } catch (IOException e) {
             e.printStackTrace();
         }
