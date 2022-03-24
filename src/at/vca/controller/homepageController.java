@@ -55,11 +55,15 @@ public class homepageController {
      */
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() { //Initialize Methode, wo bei start des Programmes dieser Code ausgeführt wird.
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Initializing homepage...");
         assert button_signIn != null : "fx:id=\"button_signIn\" was not injected: check your FXML file 'homepage.fxml'.";
         assert button_createAccount != null : "fx:id=\"button_createAccount\" was not injected: check your FXML file 'homepage.fxml'.";
         assert label_heading != null : "fx:id=\"label_heading\" was not injected: check your FXML file 'homepage.fxml'.";
         assert button_exit != null : "fx:id=\"button_exit\" was not injected: check your FXML file 'homepage.fxml'.";
 
+        System.out.println("[Log] Finished initializing homepage!");
+        System.out.println("--------------------------------------------------");
     }
 
     /**
@@ -68,6 +72,8 @@ public class homepageController {
      * @param event ActionEvent parameter from the button
      */
     public void onSignIn(ActionEvent event){    //If the Button is pressed, it switches to the  SignIn FXML, so you can switch between views.
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Switching to sign-in page...");
         try {
             node = (Node) event.getSource();
             stage = (Stage) node.getScene().getWindow();
@@ -75,6 +81,8 @@ public class homepageController {
             fxmlLoader = new FXMLLoader(getClass().getResource("../view/login.fxml"));
             root = (Parent) fxmlLoader.load();
             scene.setRoot(root);
+            System.out.println("[Log] Finished switching to sign-in page!");
+            System.out.println("--------------------------------------------------");
         } catch (IOException e) {
             e.printStackTrace();
         }

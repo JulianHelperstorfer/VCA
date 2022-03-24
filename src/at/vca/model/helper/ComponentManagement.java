@@ -52,7 +52,8 @@ public class ComponentManagement {
     }
 
     public static void loadAllComponents() throws IOException, ClassNotFoundException {
-        System.out.println("Loading all components into their lists...");
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Loading all components into their lists...");
         loadComponents(getCaseFile(), getCases());
         loadComponents(getMotherboardFile(), getMotherboards());
         loadComponents(getCpuFile(), getCpus());
@@ -63,14 +64,16 @@ public class ComponentManagement {
         loadComponents(getStorageFile(), getStorages());
         loadComponents(getCaseFanFile(), getCaseFans());
         loadComponents(getPowerSupplyFile(), getPowerSupplies());
-        System.out.println("Finished loading components!");
+        System.out.println("[Log] Finished loading components!");
+        System.out.println("--------------------------------------------------");
     }
 
     public static void initializeStandardComponents() throws IOException {
-        System.out.println("Starting Initialization of Components...");
+        System.out.println("--------------------------------------------------");
+        System.out.println("[Log] Starting Initialization of Components...");
 
         //Sockets
-        System.out.println("Initializing Sockets...");
+        System.out.println("[Log] Initializing Sockets...");
         Socket amdam4 = new Socket("AMD AM4", 0, 0);
         Socket intel1700 = new Socket("Intel 1700", 0, 0);
         Socket intel1200 = new Socket("Intel 1200", 0, 0);
@@ -84,10 +87,10 @@ public class ComponentManagement {
 
         ComponentManagement.setSockets(sockets);
 
-        System.out.println("Finished initializing sockets!");
+        System.out.println("[Log] Finished initializing sockets!");
 
         //ATX-Mainboards
-        System.out.println("Initializing Mainboards...");
+        System.out.println("[Log] Initializing Mainboards...");
         Component mSIMPGB550GamingPlus = new Motherboard("MSI MPG B550 Gaming Plus", 109.90, 110, "AMD B550", amdam4, "ATX");
         Component aSUSROGStrixB550AGaming = new Motherboard("ASUS ROG Strix B550-A Gaming", 87.90, 125, "AMD B550", amdam4, "ATX");
         Component gIGABYTEB660 = new Motherboard("GIGABYTE B660", 149.48, 353, "Intel B660", intel1700, "ATX");
@@ -113,10 +116,10 @@ public class ComponentManagement {
 
         ComponentManagement.setMotherboards(motherboards);
 
-        System.out.println("Finished initializing mainboards!");
+        System.out.println("[Log] Finished initializing mainboards!");
 
         //Cases
-        System.out.println("Initializing cases...");
+        System.out.println("[Log] Initializing cases...");
         Component taliusCronos = new Case("Talius Cronos Gaming-Gehäuse ATX", 161.69, 0, "ATX");
         Component nzxtH510 = new Case("NZXT H510", 74, 0, "ATX");
         Component lianliodyssey = new Case("Lian Li Odyssey X Big-Tower", 459.90, 0, "E-ATX");
@@ -130,10 +133,10 @@ public class ComponentManagement {
 
         ComponentManagement.setCases(cases);
 
-        System.out.println("Finished initializing cases!");
+        System.out.println("[Log] Finished initializing cases!");
 
         //CPUs
-        System.out.println("Initializing CPUs...");
+        System.out.println("[Log] Initializing CPUs...");
         Component intelCorei310100 = new CPU("Intel Core i3-10100", 107.22, 65, intel1200);
         Component intelCorei512400F = new CPU("Intel® Core™ i5-12400F", 179, 117, intel1700);
         Component intelCorei511400F = new CPU("Intel® Core™ i5-11400F", 155, 65, intel1200);
@@ -155,10 +158,10 @@ public class ComponentManagement {
 
         ComponentManagement.setCpus(cpus);
 
-        System.out.println("Finished initializing CPUs!");
+        System.out.println("[Log] Finished initializing CPUs!");
 
         //CPU-cooler
-        System.out.println("Initializing CPU-coolers...");
+        System.out.println("[Log] Initializing CPU-coolers...");
         ArrayList<Socket> list1 = new ArrayList<>();
         list1.add(amdam4);
         list1.add(intel1151);
@@ -204,10 +207,10 @@ public class ComponentManagement {
 
         ComponentManagement.setCpuCoolers(cpuCoolers);
 
-        System.out.println("Finished initializing CPU-coolers!");
+        System.out.println("[Log] Finished initializing CPU-coolers!");
 
         //GPUs
-        System.out.println("Initializing GPUs...");
+        System.out.println("[Log] Initializing GPUs...");
         Component mSIGeForceRTX3070TiVentus = new GPU("MSI GeForce RTX 3070 Ti Ventus", 855.63, 290, "ATX");
         Component MSIGeForceRTX3080Ventus = new GPU("MSI GeForce RTX 3080 Ventus 3X Plus", 1219, 320, "ATX");
         Component sapphireNitroRadeonRX6900XTSE = new GPU("Sapphire Nitro+ Radeon RX 6900 XT SE", 1349, 300, "ATX");
@@ -223,10 +226,10 @@ public class ComponentManagement {
 
         ComponentManagement.setGpus(gpus);
 
-        System.out.println("Finished initializing GPUs!");
+        System.out.println("[Log] Finished initializing GPUs!");
 
         //RAMs
-        System.out.println("Initializing RAMs...");
+        System.out.println("[Log] Initializing RAMs...");
         Component corsairVengeanceLPXschwarzDIMMKit32GB = new RAM("Corsair Vengeance LPX schwarz DIMM Kit 32GB", 118.92, 2, "2*16GB", 31);
         Component crucialBallistixschwarzDIMMKit16GB = new RAM("Crucial Ballistix schwarz DIMM Kit 16GB, DDR4-3600, CL16-18-18-38", 89.90, 2, "2*8GB", 39.17);
         Component kingstonFURYBeastDIMMKit32GB = new RAM("Kingston FURY Beast DIMM Kit 32GB, DDR5-4800, CL38-38-38, on-die ECC", 249, 2, "2*16GB", 34.9);
@@ -246,10 +249,10 @@ public class ComponentManagement {
 
         ComponentManagement.setRams(rams);
 
-        System.out.println("Finished initializing RAMs");
+        System.out.println("[Log] Finished initializing RAMs");
 
         //SSDs
-        System.out.println("Initializing storages...");
+        System.out.println("[Log] Initializing storages...");
         Component samsungSSD980PRO1TB = new Storage("Samsung SSD 980 PRO 1TB, M.2", 150.35, 9, 1000);
         Component samsungSSD870EVO1TB = new Storage("Samsung SSD 870 EVO 1TB, SATA", 115.90, 4, 1000);
         Component kIOXIAEXCERIAG2SSD1TB = new Storage("KIOXIA EXCERIA G2 SSD 1TB, M.2", 55.14, 4, 1000);
@@ -277,10 +280,10 @@ public class ComponentManagement {
 
         ComponentManagement.setStorages(storages);
 
-        System.out.println("Finished initializing storages!");
+        System.out.println("[Log] Finished initializing storages!");
 
         //Power Supplies
-        System.out.println("Initializing power supplies...");
+        System.out.println("[Log] Initializing power supplies...");
         Component bequietStraightPower11Platinum850WATX = new PowerSupply("be quiet! Straight Power 11 Platinum 850W ATX 2.51", 151.46, 0, 850);
         Component corsairRMxSeriesRM850x = new PowerSupply("Corsair RMx Series RM850x", 118.98, 0, 850);
         Component bequietPurePower11600WATX = new PowerSupply("be quiet! Pure Power 11 600W ATX 2.4", 80.57, 0, 600);
@@ -300,10 +303,10 @@ public class ComponentManagement {
 
         ComponentManagement.setPowerSupplies(powerSupplies);
 
-        System.out.println("Finished initializing power supplies!");
+        System.out.println("[Log] Finished initializing power supplies!");
 
         //Case Fans
-        System.out.println("Initializing case fans...");
+        System.out.println("[Log] Initializing case fans...");
         Component corsairLL120RGBLEDPWMPCGehauuseluefter = new CaseFan("Corsair LL120 RGB LED PWM 3er Pack", 80.45, 3, "Micro-ATX");
         Component eZDIYFABMoonlightRGB = new CaseFan("EZDIY-FAB Moonlight RGB Single", 26.26, 3, "Micro-ATX");
         Component noiseBlockerBlackSilentXR2PCGehauuseLuefter = new CaseFan("NoiseBlocker BlackSilent XR-2 Single", 5.80, 1, "Micro-ATX");
@@ -314,10 +317,10 @@ public class ComponentManagement {
         caseFans.add(noiseBlockerBlackSilentXR2PCGehauuseLuefter);
         ComponentManagement.setCaseFans(caseFans);
 
-        System.out.println("Finished initializing case fans!");
+        System.out.println("[Log] Finished initializing case fans!");
 
         //write components into their files
-        System.out.println("Saving components to files...");
+        System.out.println("[Log] Saving components to files...");
 
         saveComponents(getCaseFile(), getCases());
         saveComponents(getMotherboardFile(), getMotherboards());
@@ -330,9 +333,10 @@ public class ComponentManagement {
         saveComponents(getCaseFanFile(), getCaseFans());
         saveComponents(getPowerSupplyFile(), getPowerSupplies());
 
-        System.out.println("Finished saving components to files!");
+        System.out.println("[Log] Finished saving components to files!");
 
-        System.out.println("Initialization of components complete!");
+        System.out.println("[Log] Initialization of components complete!");
+        System.out.println("--------------------------------------------------");
     }
 
 
